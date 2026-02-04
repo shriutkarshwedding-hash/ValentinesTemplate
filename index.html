@@ -8,35 +8,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
         body { 
-            background-color: #fff5f7; 
+            background-color: #fff0f3; 
             font-family: 'Caveat', cursive;
+            overflow: hidden;
         }
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 100px;
+        .glass-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
         #no-btn {
             position: relative;
             transition: all 0.2s ease;
+            z-index: 1000;
+        }
+        .custom-btn {
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            color: #1e293b;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+<body class="flex items-center justify-center min-h-screen p-4">
 
-    <div id="main-card" class="max-w-md w-full">
-        <img id="valentine-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeilMtQtAYOEq/giphy.gif" class="w-64 h-64 mx-auto mb-6 rounded-xl shadow-sm">
+    <div id="main-card" class="glass-card flex flex-col items-center text-center max-w-sm w-full">
+        <img id="valentine-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeilMtQtAYOEq/giphy.gif" class="w-48 h-48 mb-6">
 
-        <h1 id="question" class="text-4xl text-red-600 mb-8 px-2">Dear Singh Sahab, Will you be my Valentine?</h1>
+        <h1 id="question" class="text-3xl text-gray-800 mb-8 leading-tight">Dear Singh Sahab, Will you be my Valentine?</h1>
 
-        <div class="btn-container">
-            <button id="yes-btn" onclick="handleYes()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold text-2xl shadow-lg transform transition hover:scale-110">
+        <div id="btn-group" class="flex gap-4 items-center justify-center w-full min-h-[60px]">
+            <button id="yes-btn" onclick="handleYes()" class="custom-btn hover:bg-green-50">
                 YESSSS
             </button>
-            <button id="no-btn" onmouseover="moveButton()" onclick="moveButton()" class="bg-red-500 text-white px-6 py-2 rounded-full font-bold text-lg shadow-md">
+            <button id="no-btn" onmouseover="moveButton()" onclick="moveButton()" class="custom-btn hover:bg-red-50">
                 No
             </button>
         </div>
@@ -58,11 +68,11 @@
         let phraseIndex = 0;
 
         function moveButton() {
-            // Change text
+            // Update the text
             noButton.innerText = phrases[phraseIndex];
             phraseIndex = (phraseIndex + 1) % phrases.length;
 
-            // Make it jump
+            // Make it jump anywhere on the screen
             noButton.style.position = 'fixed';
             const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
