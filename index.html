@@ -79,8 +79,26 @@ No
 
 const noButton = document.getElementById("no-btn");
 
+const phrases = [
+"Wrong button ❌",
+"Are you sure? 🤔",
+"Can't Catch-up? 😂",
+"Pookie Please 🥺",
+"Think again 😤",
+"No :( 💔",
+"I am going to die 💀",
+"You are talking to my ghost 👻"
+];
+
+let phraseIndex = 0;
+
 function moveButton(){
 
+// Change text
+noButton.innerText = phrases[phraseIndex];
+phraseIndex = (phraseIndex + 1) % phrases.length;
+
+// Move button
 noButton.style.position="fixed";
 
 const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
