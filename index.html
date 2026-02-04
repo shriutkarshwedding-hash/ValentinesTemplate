@@ -11,34 +11,44 @@
             background-color: #fff0f3; 
             font-family: 'Caveat', cursive;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: screen;
         }
         .glass-card {
             background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        #no-btn {
-            position: relative;
-            transition: all 0.2s ease;
-            z-index: 1000;
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-center: center;
+            max-width: 90%;
+            width: 400px;
         }
         .custom-btn {
             background-color: white;
-            border: 2px solid #e2e8f0;
-            color: #1e293b;
-            padding: 10px 30px;
+            border: 2px solid #f1f5f9;
+            color: #334155;
+            padding: 12px 32px;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+        }
+        #no-btn {
+            position: relative;
+            z-index: 999;
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body>
 
-    <div id="main-card" class="glass-card flex flex-col items-center text-center max-w-sm w-full">
-        <img id="valentine-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeilMtQtAYOEq/giphy.gif" class="w-48 h-48 mb-6">
+    <div class="glass-card">
+        <img id="valentine-img" src="https://media.tenor.com/j86_p9_7S-EAAAAM/waiting-love.gif" class="w-56 h-56 mb-6 rounded-xl">
 
         <h1 id="question" class="text-3xl text-gray-800 mb-8 leading-tight">Dear Singh Sahab, Will you be my Valentine?</h1>
 
@@ -68,14 +78,12 @@
         let phraseIndex = 0;
 
         function moveButton() {
-            // Update the text
             noButton.innerText = phrases[phraseIndex];
             phraseIndex = (phraseIndex + 1) % phrases.length;
 
-            // Make it jump anywhere on the screen
             noButton.style.position = 'fixed';
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight - 20);
             
             noButton.style.left = x + 'px';
             noButton.style.top = y + 'px';
@@ -83,7 +91,8 @@
 
         function handleYes() {
             document.getElementById('question').innerText = "Hehehehe I love you mere boondi ke laddoo…!!!";
-            document.getElementById('valentine-img').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUsMGDv/giphy.gif";
+            // Success GIF (Tenor Link)
+            document.getElementById('valentine-img').src = "https://media.tenor.com/gU_Pb_76Y88AAAAM/bear-kiss-bear-love.gif";
             document.getElementById('no-btn').style.display = 'none';
             document.getElementById('yes-btn').style.display = 'none';
         }
