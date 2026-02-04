@@ -1,102 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dear Singh Sahab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            background-color: #fff0f3; 
-            font-family: 'Caveat', cursive;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        .glass-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 350px;
-            z-index: 10;
-        }
-        .custom-btn {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            color: #334155;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.2s;
-            min-width: 100px;
-            cursor: pointer;
-        }
-        #no-btn {
-            position: relative;
-            z-index: 1000;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Singh Sahab</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background-color: #fff0f3;
+    font-family: 'Caveat', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.glass-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.custom-btn {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.custom-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#no-btn {
+    position: relative;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="glass-card">
-        <img id="valentine-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeilMtQtAYOEq/giphy.gif" class="w-48 h-48 mb-6 rounded-xl" alt="Cute Bear">
+<div class="glass-card">
 
-        <h1 id="question" class="text-3xl text-gray-800 mb-8 leading-tight">Dear Singh Sahab, Will you be my Valentine?</h1>
+<img id="valentine-img"
+src="https://media.giphy.com/media/L4lvBzeilMtQtAYOEq/giphy.gif"
+class="w-48 h-48 mb-6 rounded-xl"
+alt="Cute Bear">
 
-        <div id="btn-group" class="flex gap-4 items-center justify-center w-full">
-            <button id="yes-btn" onclick="handleYes()" class="custom-btn hover:bg-green-50">
-                YESSSS
-            </button>
-            <button id="no-btn" onmouseover="moveButton()" onclick="moveButton()" class="custom-btn hover:bg-red-50">
-                No
-            </button>
-        </div>
-    </div>
+<h1 id="question"
+class="text-3xl text-gray-800 mb-8 leading-tight">
+Dear Singh Sahab, Will you be my Valentine?
+</h1>
 
-    <script>
-        const noButton = document.getElementById('no-btn');
-        const phrases = [
-            "Wrong button ❌",
-            "Are you sure? 🤔",
-            "Can’t Catch-up? 😂",
-            "Pookie Please.. 🥺",
-            "How about a batch of hash brownies.? 🥮",
-            "No :( 💔",
-            "I am going to die 💀",
-            "I am dead 🪦",
-            "You are talking to my ghost 👻"
-        ];
-        let phraseIndex = 0;
+<div class="flex gap-4">
 
-        function moveButton() {
-            noButton.innerText = phrases[phraseIndex];
-            phraseIndex = (phraseIndex + 1) % phrases.length;
+<button id="yes-btn"
+onclick="handleYes()"
+class="custom-btn hover:bg-green-50">
+YESSSS
+</button>
 
-            noButton.style.position = 'fixed';
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth - 20);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight - 20);
-            
-            noButton.style.left = x + 'px';
-            noButton.style.top = y + 'px';
-        }
+<button id="no-btn"
+onmouseover="moveButton()"
+onclick="moveButton()"
+class="custom-btn hover:bg-red-50">
+No
+</button>
 
-        function handleYes() {
-            document.getElementById('question').innerText = "Hehehehe I love you mere boondi ke laddoo…!!!";
-            document.getElementById('valentine-img').src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUsMGDv/giphy.gif";
-            document.getElementById('no-btn').style.display = 'none';
-            document.getElementById('yes-btn').style.display = 'none';
-        }
-    </script>
+</div>
+
+</div>
+
+<script>
+
+const noButton = document.getElementById("no-btn");
+
+const phrases = [
+"Wrong button ❌",
+"Are you sure? 🤔",
+"Can't Catch-up? 😂",
+"Pookie Please 🥺",
+"Think again 😤",
+"No :( 💔",
+"I am going to die 💀",
+"You are talking to my ghost 👻"
+];
+
+let phraseIndex = 0;
+
+function moveButton() {
+
+noButton.innerText = phrases[phraseIndex];
+phraseIndex = (phraseIndex + 1) % phrases.length;
+
+noButton.style.position = "fixed";
+
+const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+noButton.style.left = x + "px";
+noButton.style.top = y + "px";
+}
+
+function handleYes() {
+
+document.getElementById("question").innerText =
+"Hehehehe I love you mere boondi ke laddoo ❤️";
+
+document.getElementById("valentine-img").src =
+"https://media.giphy.com/media/KztT2c4u8mYYUsMGDv/giphy.gif";
+
+document.getElementById("yes-btn").style.display = "none";
+document.getElementById("no-btn").style.display = "none";
+
+/* CONFETTI BLAST */
+
+confetti({
+particleCount: 150,
+spread: 90,
+origin: { y: 0.6 }
+});
+
+}
+</script>
+
 </body>
 </html>
