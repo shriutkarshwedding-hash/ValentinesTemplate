@@ -14,7 +14,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: screen;
+            min-height: 100vh;
+            margin: 0;
         }
         .glass-card {
             background: white;
@@ -24,35 +25,35 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-center: center;
-            max-width: 90%;
-            width: 400px;
+            text-align: center;
+            width: 350px;
+            z-index: 10;
         }
         .custom-btn {
-            background-color: white;
-            border: 2px solid #f1f5f9;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
             color: #334155;
-            padding: 12px 32px;
+            padding: 10px 25px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            font-size: 1.1rem;
             transition: all 0.2s;
+            min-width: 100px;
         }
         #no-btn {
             position: relative;
-            z-index: 999;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <div class="glass-card">
-        <img id="valentine-img" src="https://media.tenor.com/j86_p9_7S-EAAAAM/waiting-love.gif" class="w-56 h-56 mb-6 rounded-xl">
+        <img id="valentine-img" src="https://i.imgur.com/mU7XWf5.gif" class="w-48 h-48 mb-6 rounded-xl" alt="Cute Bear">
 
         <h1 id="question" class="text-3xl text-gray-800 mb-8 leading-tight">Dear Singh Sahab, Will you be my Valentine?</h1>
 
-        <div id="btn-group" class="flex gap-4 items-center justify-center w-full min-h-[60px]">
+        <div id="btn-group" class="flex gap-4 items-center justify-center w-full">
             <button id="yes-btn" onclick="handleYes()" class="custom-btn hover:bg-green-50">
                 YESSSS
             </button>
@@ -91,8 +92,7 @@
 
         function handleYes() {
             document.getElementById('question').innerText = "Hehehehe I love you mere boondi ke laddoo…!!!";
-            // Success GIF (Tenor Link)
-            document.getElementById('valentine-img').src = "https://media.tenor.com/gU_Pb_76Y88AAAAM/bear-kiss-bear-love.gif";
+            document.getElementById('valentine-img').src = "https://i.imgur.com/vHdfyv7.gif";
             document.getElementById('no-btn').style.display = 'none';
             document.getElementById('yes-btn').style.display = 'none';
         }
