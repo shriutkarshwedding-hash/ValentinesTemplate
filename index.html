@@ -3,96 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dear Singh Sahab</title>
+
+<title>Valentine</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Confetti Library -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    background-color: #fff0f3;
-    font-family: 'Caveat', cursive;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    overflow: hidden;
+
+body{
+    background:#fff0f3;
+    font-family:'Caveat',cursive;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+    text-align:center;
 }
 
-.glass-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 350px;
-    text-align: center;
-    animation: fadeIn 1s ease;
+.custom-btn{
+    background:white;
+    border:1px solid #ddd;
+    padding:10px 30px;
+    border-radius:40px;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.custom-btn {
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.25s ease;
-    cursor: pointer;
+.custom-btn:hover{
+    transform:scale(1.1);
 }
 
-.custom-btn:hover {
-    transform: scale(1.1);
+#no-btn{
+    position:relative;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-#no-btn {
-    position: relative;
-}
 </style>
 </head>
 
 <body>
 
-<div class="glass-card">
+<h1 id="question" class="text-4xl text-pink-500 mb-6">
+♡ Will you be my Valentine? ♡
+</h1>
 
 <img id="valentine-img"
 src="./assets/assets/bear1.webp"
-class="w-48 h-48 mb-6 rounded-xl"
+class="w-60 mb-8"
 alt="Cute Bear">
 
-<h1 id="question"
-class="text-3xl text-gray-800 mb-8 leading-tight">
-Dear Singh Sahab, Will you be my Valentine?
-</h1>
-
-<div class="flex gap-4">
+<div class="flex gap-6">
 
 <button id="yes-btn"
 onclick="handleYes()"
-class="custom-btn hover:bg-green-50">
-YESSSS
+class="custom-btn">
+Yes
 </button>
 
 <button id="no-btn"
 onmouseover="moveButton()"
 onclick="moveButton()"
-class="custom-btn hover:bg-red-50">
+class="custom-btn">
 No
 </button>
-
-</div>
 
 </div>
 
@@ -100,55 +79,38 @@ No
 
 const noButton = document.getElementById("no-btn");
 
-const phrases = [
-"Wrong button ❌",
-"Are you sure? 🤔",
-"Can't Catch-up? 😂",
-"Pookie Please 🥺",
-"Think again 😤",
-"No :( 💔",
-"I am going to die 💀",
-"You are talking to my ghost 👻"
-];
+function moveButton(){
 
-let phraseIndex = 0;
-
-function moveButton() {
-
-noButton.innerText = phrases[phraseIndex];
-phraseIndex = (phraseIndex + 1) % phrases.length;
-
-noButton.style.position = "fixed";
+noButton.style.position="fixed";
 
 const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
 const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
 
 noButton.style.left = x + "px";
 noButton.style.top = y + "px";
+
 }
 
-function handleYes() {
+function handleYes(){
 
 document.getElementById("question").innerText =
 "Hehehehe I love you mere boondi ke laddoo ❤️";
 
 document.getElementById("valentine-img").src =
 "./assets/assets/2 bears.webp";
-document.getElementById("valentine-img").src =
 
-
-document.getElementById("yes-btn").style.display = "none";
-document.getElementById("no-btn").style.display = "none";
-
-/* CONFETTI BLAST */
-
+/* confetti */
 confetti({
-particleCount: 150,
-spread: 90,
-origin: { y: 0.6 }
+particleCount:150,
+spread:90,
+origin:{y:0.6}
 });
 
+document.getElementById("yes-btn").style.display="none";
+document.getElementById("no-btn").style.display="none";
+
 }
+
 </script>
 
 </body>
