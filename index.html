@@ -30,7 +30,7 @@
             z-index: 10;
         }
         .custom-btn {
-            background-color: #f8fafc;
+            background-color: #ffffff;
             border: 1px solid #e2e8f0;
             color: #334155;
             padding: 10px 25px;
@@ -39,6 +39,7 @@
             font-size: 1.1rem;
             transition: all 0.2s;
             min-width: 100px;
+            cursor: pointer;
         }
         #no-btn {
             position: relative;
@@ -49,7 +50,7 @@
 <body>
 
     <div class="glass-card">
-        <img id="valentine-img" src="https://i.imgur.com/mU7XWf5.gif" class="w-48 h-48 mb-6 rounded-xl" alt="Cute Bear">
+        <img id="valentine-img" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeilMtQtAYOEq/giphy.gif" class="w-48 h-48 mb-6 rounded-xl" alt="Cute Bear">
 
         <h1 id="question" class="text-3xl text-gray-800 mb-8 leading-tight">Dear Singh Sahab, Will you be my Valentine?</h1>
 
@@ -92,7 +93,7 @@
 
         function handleYes() {
             document.getElementById('question').innerText = "Hehehehe I love you mere boondi ke laddoo…!!!";
-            document.getElementById('valentine-img').src = "https://i.imgur.com/vHdfyv7.gif";
+            document.getElementById('valentine-img').src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYyZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZzR0bmZueGZpZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUsMGDv/giphy.gif";
             document.getElementById('no-btn').style.display = 'none';
             document.getElementById('yes-btn').style.display = 'none';
         }
