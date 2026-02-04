@@ -3,40 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
+    <title>Dear Singh Sahab</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        .no-button { position: absolute; transition: all 0.2s ease; }
+        .handwritten { font-family: 'Dancing Script', cursive; }
+        #no-btn { position: absolute; transition: all 0.2s ease; z-index: 50; }
+        body { background-color: #fff5f7; }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-pink-100">
-    <div id="content" class="text-center">
-        <img id="valentine-img" src="https://media.tenor.com/j86_p9_7S-EAAAAM/waiting-love.gif" class="w-64 h-64 mb-4">
-        <h1 id="question" class="text-2xl font-bold text-red-600 mb-8">Dear Mr. Singh Sahab, Will you be my valentine.?</h1>
-        <div class="flex gap-4 justify-center relative">
-            <button onclick="handleYes()" class="bg-green-500 text-white px-8 py-2 rounded-lg font-bold">Yes</button>
-            <button id="no-btn" onmouseover="moveButton()" class="no-button bg-red-500 text-white px-8 py-2 rounded-lg font-bold">No</button>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 overflow-hidden">
+    <div id="content" class="flex flex-col items-center text-center max-w-md">
+        <img id="valentine-img" src="https://media.gifdb.com/bubu-happy-dudu-mcruqb7z5ltuz8y5.gif" alt="Cute GIF" class="w-64 h-64 mb-6 rounded-lg shadow-lg">
+        
+        <h1 id="question" class="handwritten text-4xl text-red-600 mb-10 leading-snug">Dear Singh Sahab, Will you be my Valentine?</h1>
+        
+        <div class="flex gap-6 items-center justify-center w-full min-h-[100px] relative">
+            <button onclick="handleYes()" class="bg-green-500 hover:bg-green-600 text-white px-10 py-3 rounded-full font-bold text-xl shadow-md transition-transform active:scale-95">
+                YESSSS
+            </button>
+            <button id="no-btn" onmouseover="moveButton()" class="bg-red-500 text-white px-6 py-2 rounded-full font-bold shadow-md">
+                No
+            </button>
         </div>
     </div>
 
     <script>
         const noButton = document.getElementById('no-btn');
-        const phrases = ["Please?", "Why not?", "Think again!", "Pleeaaaase!", "Don't do this!"];
+        const phrases = [
+            "Wrong button ❌",
+            "Are you sure? 🤔",
+            "Can’t Catch-up? 😂",
+            "Pookie Please.. 🥺",
+            "How about a batch of hash brownies.? 🥮",
+            "No :( 💔",
+            "I am going to die 💀",
+            "I am dead 🪦",
+            "You are talking to my ghost 👻"
+        ];
         let phraseIndex = 0;
 
         function moveButton() {
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            // Screen boundaries
+            const padding = 50;
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth - padding);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight - padding);
+            
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
+            
+            // Change text
             noButton.innerText = phrases[phraseIndex];
             phraseIndex = (phraseIndex + 1) % phrases.length;
         }
 
         function handleYes() {
-            document.getElementById('question').innerText = "Yay! See you soon! ❤️";
-            document.getElementById('valentine-img').src = "https://media.tenor.com/gU_Pb_76Y88AAAAM/bear-kiss-bear-love.gif";
+            document.getElementById('question').innerText = "Hehehehe I love you mere boondi ke laddoo…!!!";
+            document.getElementById('valentine-img').src = "https://media.gifdb.com/bubu-kiss-sweet-dudu-7uf4hstqt631qmlp.gif";
             noButton.style.display = 'none';
+            // Make text bigger and cuter
+            document.getElementById('question').classList.add("text-5xl", "text-pink-600");
         }
     </script>
 </body>
